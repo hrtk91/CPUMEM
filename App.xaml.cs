@@ -107,7 +107,6 @@ namespace CPUMEM
             catch (Exception ex)
             {
                 logger.Error(ex, $"{nameof(Tick)} : 例外が発生");
-                throw;
             }
         }
     }
