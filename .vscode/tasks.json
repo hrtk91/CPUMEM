@@ -21,7 +21,26 @@
                 "publish",
                 "${workspaceFolder}/CPUMEM.csproj",
                 "/property:GenerateFullPaths=true",
-                "/consoleloggerparameters:NoSummary"
+                "/consoleloggerparameters:NoSummary",
+                "-o",
+                "./CPUMEM"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish-sc",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/CPUMEM.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary",
+                "-o",
+                "./CPUMEM_win-x64",
+                "--sc",
+                "-r",
+                "win-x64"
             ],
             "problemMatcher": "$msCompile"
         },
