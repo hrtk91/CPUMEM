@@ -1,3 +1,5 @@
 bin
 obj
 publish
+CPUMEM
+CPUMEM_win-x64
