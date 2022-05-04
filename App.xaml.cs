@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Management;
+using System.Runtime.InteropServices;
 using System.Windows;
 using System.Windows.Forms;
 using System.Windows.Threading;
@@ -172,10 +173,18 @@ namespace CPUMEM
             }
         }
 
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        extern static bool DestroyIcon(IntPtr handle);
+
         private void UpdateIcon(Bitmap bmp)
         {
             try
             {
+                if (Icon.Icon is not null)
+                {
+                    DestroyIcon(Icon.Icon.Handle);
+                }
+
                 Icon.Icon = System.Drawing.Icon.FromHandle(bmp.GetHicon());
             }
             catch (Exception ex)
