@@ -141,7 +141,7 @@ namespace CPUMEM
         {
             try
             {
-                Icon.Text =$"CPU: {(cpuload * 100).ToString("00")}%\r\nMem: {(memload * 100).ToString("00")}%";
+                Icon.Text = $"CPU: {(cpuload * 100).ToString("00")}%\r\nMem: {(memload * 100).ToString("00")}%";
             }
             catch (Exception ex)
             {
@@ -158,12 +158,14 @@ namespace CPUMEM
                 {
                     // 枠の描画
                     g.DrawRectangle(new Pen(Color.Gray), new Rectangle(0, 0, bitmap.Width - 1, bitmap.Height - 1));
-                    
+
                     // CPU使用率の描画
-                    g.FillRectangle(Brushes.Aqua,  new Rectangle(4, 32 - (int)(bitmap.Height * cpuload), 10, (int)(bitmap.Height * cpuload)));
+                    var cpuHeight = (int)((bitmap.Height - 2) * cpuload);
+                    g.FillRectangle(Brushes.Aqua, new Rectangle(4, 30 - cpuHeight, 10, cpuHeight));
 
                     // メモリ使用率の描画
-                    g.FillRectangle(Brushes.Orange,  new Rectangle(18, 32 - (int)(bitmap.Height * memload), 10, (int)(bitmap.Height * memload)));
+                    var memHeight = (int)((bitmap.Height - 2) * memload);
+                    g.FillRectangle(Brushes.Orange, new Rectangle(18, 30 - memHeight, 10, memHeight));
                 }
                 return bitmap;
             }
